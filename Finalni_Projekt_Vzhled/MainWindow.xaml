@@ -19,13 +19,13 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Pohlaví:" Width="80" VerticalAlignment="Center"/>
-                        <CheckBox x:Name="CheckBoxMuz" Content="Muž" Checked="Gender_Checked" Unchecked="Gender_Unchecked"/>
-                        <CheckBox x:Name="CheckBoxZena" Content="Žena" Margin="10,0,0,0" Checked="Gender_Checked" Unchecked="Gender_Unchecked"/>
+                        <CheckBox x:Name="CheckBoxMuz" Content="Muž" Checked="Gender_Checked"/>
+                        <CheckBox x:Name="CheckBoxZena" Content="Žena" Margin="10,0,0,0" Checked="Gender_Checked" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Hmotnost:" Width="80" VerticalAlignment="Center"/>
-                        <TextBox Width="60" Margin="0,0,10,0"/>
+                        <TextBox x:Name="txtBoxWeight" Width="60" Margin="0,0,10,0"/>
                         <ComboBox Width="60">
                             <ComboBoxItem Content="kg" IsSelected="True"/>
                         </ComboBox>
@@ -42,19 +42,19 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center"/>
-                        <TextBox Width="100"/>
+                        <TextBox x:Name="txtBoxDrinkStart" Width="100"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Konec pití:" Width="100" VerticalAlignment="Center"/>
-                        <TextBox Width="100"/>
+                        <TextBox x:Name="txtBoxDrinkEnd" Width="100"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
 
             <Button Content="Pokračovat" Margin="0 5" Click="Continue2_Click" Background="DeepSkyBlue" Foreground="White"/>
         </StackPanel>
-        <StackPanel x:Name="Vyber_alk"  Grid.Row="2" Margin="20,0,20,20">
+        <StackPanel x:Name="Vyber_alk" Visibility="Collapsed" Grid.Row="2" Margin="20,0,20,20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Vyplněné nápoje" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>

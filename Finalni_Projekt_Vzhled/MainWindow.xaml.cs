@@ -21,13 +21,33 @@ namespace Finalni_Projekt_Vzhled
             InitializeComponent();
         }
         private void Continue1_Click(object sender, RoutedEventArgs e)
-        {
-            Alkohol_detaily.Visibility = Visibility.Visible;
+{
+                Alkohol_detaily.Visibility = Visibility.Visible;
+            
         }
 
         private void Continue2_Click(object sender, RoutedEventArgs e)
         {
-            Vyber_alk.Visibility = Visibility.Visible;
+            if (CheckBoxMuz.IsChecked == false && CheckBoxZena.IsChecked == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Není zaškrtlé žádné pohlaví!!!", "Výběr pohlaví", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(txtBoxWeight.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte svojí hmotnost!!!", "Zadání hmotnosti", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(txtBoxDrinkStart.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte začátek pití ⊂(◉‿◉)つ", "Zadání začátku pití", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (txtBoxDrinkEnd.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte konec pití(╥﹏╥)", "Zadání konce pití", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Vyber_alk.Visibility = Visibility.Visible;
+            }
         }
     
 
@@ -39,9 +59,6 @@ namespace Finalni_Projekt_Vzhled
                 CheckBoxMuz.IsChecked = false;
         }
 
-        private void Gender_Unchecked(object sender, RoutedEventArgs e)
-        {
-            // Volitelně můžeš doplnit logiku
-        }
+       
     }
 }
