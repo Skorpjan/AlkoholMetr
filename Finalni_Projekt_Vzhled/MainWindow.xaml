@@ -58,11 +58,12 @@
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Vyplněné nápoje" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-                    <ComboBox Width="200" Margin="0 5">
-                        <ComboBoxItem Content="Pivo 12°" IsSelected="True"/>
-                        <ComboBoxItem Content="Víno"/>
-                        <ComboBoxItem Content="Panák (tvrdý alkohol)"/>
-                    </ComboBox>
+
+                    <!-- Filtrační TextBox a ComboBox v jednom řádku -->
+                    <StackPanel Orientation="Horizontal" Margin="0 5" VerticalAlignment="Center">
+                        <TextBox x:Name="FilterTextBox" Width="200" Margin="0,0,10,0" TextChanged="FilterTextBox_TextChanged"/>
+                        <ComboBox x:Name="DrinkComboBox" Width="200" />
+                    </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <Button Content="0.3 l" Margin="2"/>
@@ -73,6 +74,7 @@
                 </StackPanel>
             </Border>
 
+            <!-- Zbytek zůstává stejný -->
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Výsledek" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>

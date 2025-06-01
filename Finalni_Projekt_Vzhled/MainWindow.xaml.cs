@@ -59,6 +59,10 @@ namespace Finalni_Projekt_Vzhled
                 CheckBoxMuz.IsChecked = false;
         }
 
-       
-    }
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+
+        }
 }
