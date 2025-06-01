@@ -34,18 +34,25 @@ namespace Finalni_Projekt_Vzhled
         }
         private void LoadData()
         {
-            var path = "data.xml";
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.xml");
+
             if (!File.Exists(path))
             {
-                MessageBox.Show("data.xml nenalezeno!"); //data.xml jsou uložena v C:\Users\[USER]\source\repos\[JMENOREPOSITARE]\[JMENOPROJEKTU]\bin\Debug\net8.0-windows
-                data = new Database();
+                MessageBox.Show("data.xml not found!");
+                data = new Database();  // prevent null refs
                 return;
             }
 
-            var serializer = new XmlSerializer(typeof(Database)); //vytvoří se XmlSerializer pro typ Database, otevře se FileStream a data se z XML načtou do proměnné data
-            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            try
             {
-                data = (Database)serializer.Deserialize(fs) as Database;
+                var serializer = new XmlSerializer(typeof(Database));
+                using var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                data = (Database)serializer.Deserialize(fs);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load data.xml: {ex.Message}");
+                data = new Database();  // fallback
             }
         }
 

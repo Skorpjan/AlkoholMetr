@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Alcohols>
+    <Alcohol Name="Pilsner Urquell" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Budějovický Budvar" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Gambrinus" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Staropramen" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Velkopopovický Kozel" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Radegast" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Krušovice" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Holba" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Svijany" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Starobrno" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Zlatopramen" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Platan Kvasnicový ležák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Ostravar" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Postřižinské" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Poutník" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Bernard" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Břevnovský Benedict Světlý ležák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Břevnovský Benedict Tmavý ležák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Břevnovský Benedict Pšeničný" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Břevnovský Benedict IPA" Abv="0.07" Type="Beer" />
+    <Alcohol Name="Březňák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Herold" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Strakonický Dudák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Zubr" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Litovel Premium" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Černá Hora Klasik" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Samson Premium" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Matuška Raptor IPA" Abv="0.07" Type="Beer" />
+    <Alcohol Name="Kozel Černý" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Vinohradský Švec" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Permon Světlý ležák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Chodovar Premium" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Zlatý Bažant" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Žatecký Gus" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Permon Tmavý ležák" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Pivovar Raven IPA" Abv="0.06" Type="Beer" />
+    <Alcohol Name="Matuška Světlej Tlustej" Abv="0.07" Type="Beer" />
+    <Alcohol Name="Permon Polotmavý" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Raven Porter" Abv="0.07" Type="Beer" />
+    <Alcohol Name="Matuška Chronical I.P.A." Abv="0.08" Type="Beer" />
+    <Alcohol Name="Clock Restart IPA" Abv="0.06" Type="Beer" />
+    <Alcohol Name="Purkmistr Mana" Abv="0.06" Type="Beer" />
+    <Alcohol Name="Svijany Světlé speciální" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Černá Hora Kvasničák" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Heineken" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Stella Artois" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Guinness Draught" Abv="0.04" Type="Beer" />
+    <Alcohol Name="Warsteiner" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Bitburger Premium Pils" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Leffe Blonde" Abv="0.06" Type="Beer" />
+    <Alcohol Name="Duvel" Abv="0.08" Type="Beer" />
+    <Alcohol Name="Tripel Karmeliet" Abv="0.08" Type="Beer" />
+    <Alcohol Name="Westmalle Tripel" Abv="0.09" Type="Beer" />
+    <Alcohol Name="Paulaner Hefe-Weißbier" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Augustiner Helles" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Erdinger Weissbier" Abv="0.05" Type="Beer" />
+    <Alcohol Name="Chimay Blue" Abv="0.09" Type="Beer" />
+    <Alcohol Name="Hoegaarden" Abv="0.045" Type="Beer" />
+    <Alcohol Name="Bohemia Sekt Demi Sec" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Bohemia Sekt Brut" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Müller Thurgau" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Ryzlink vlašský" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Chardonnay" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Sauvignon" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Rulandské šedé" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Tramín červený" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Frankovka" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Cabernet Moravia" Abv="0.14" Type="Vine" />
+    <Alcohol Name="Cabernet Sauvignon" Abv="0.14" Type="Vine" />
+    <Alcohol Name="Merlot" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Rulandské modré" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Svatovavřinecké" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Zweigeltrebe" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Muškát Moravský" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Veltlínské zelené" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Ryzlink rýnský" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Modrý Portugal" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Sperk" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Svatovavřinecké Rosé" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Müller Thurgau kabinet" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Vlašský Vavřinec" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Pálava" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Ryzlink rýnský kabinet" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Rulandské bílé pozdní sběr" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Frankovka rosé" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Chianti Classico" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Prosecco" Abv="0.11" Type="Vine" />
+    <Alcohol Name="Rioja Reserva" Abv="0.14" Type="Vine" />
+    <Alcohol Name="Cava Brut" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Bordeaux Supérieur" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Burgundské Pinot Noir" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Barolo" Abv="0.14" Type="Vine" />
+    <Alcohol Name="Château Margaux" Abv="0.13" Type="Vine" />
+    <Alcohol Name="Sauternes" Abv="0.14" Type="Vine" />
+    <Alcohol Name="Tokaji Aszú" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Grüner Veltliner" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Riesling Kabinett" Abv="0.11" Type="Vine" />
+    <Alcohol Name="Aligoté" Abv="0.12" Type="Vine" />
+    <Alcohol Name="Tuzemský rum" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Božkov Tuzemský" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Captain Morgan Spiced Rum" Abv="0.35" Type="Distillate" />
+    <Alcohol Name="Bacardi Superior" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Božkov Republica Exclusive" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Božkov Republica" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="R. Jelínek Slivovice" Abv="0.50" Type="Distillate" />
+    <Alcohol Name="Božkov Slivovice" Abv="0.50" Type="Distillate" />
+    <Alcohol Name="Meruňkovice" Abv="0.45" Type="Distillate" />
+    <Alcohol Name="Hruškovice" Abv="0.52" Type="Distillate" />
+    <Alcohol Name="Borovička Fabián" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Fruko Schulz Slivovice" Abv="0.35" Type="Distillate" />
+    <Alcohol Name="Becherovka Original" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Becherovka Lemond" Abv="0.33" Type="Distillate" />
+    <Alcohol Name="Fernet Stock" Abv="0.39" Type="Distillate" />
+    <Alcohol Name="Fernet 7" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Jägermeister" Abv="0.35" Type="Distillate" />
+    <Alcohol Name="Stolichnaya Vodka" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Absolut Vodka" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Finlandia Vodka" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Smirnoff Vodka" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Grey Goose Vodka" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Jack Daniel’s" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Jameson Irish Whiskey" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Jim Beam Bourbon" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Johnnie Walker Red Label" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Bushmills Irish Whiskey" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Beefeater Gin" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Bombay Sapphire Gin" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Krupnik Medovina" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Slivovica Rudolf Jelínek" Abv="0.52" Type="Distillate" />
+    <Alcohol Name="Kleiner Feigling" Abv="0.15" Type="Distillate" />
+    <Alcohol Name="Meziříčská Medovina" Abv="0.08" Type="Distillate" />
+    <Alcohol Name="Hendrick’s Gin" Abv="0.41" Type="Distillate" />
+    <Alcohol Name="Belvedere Vodka" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Hennessy VS" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Rémy Martin VSOP" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Glenfiddich 12 Year" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Johnnie Walker Black Label" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Chivas Regal 12" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Baileys Irish Cream" Abv="0.17" Type="Distillate" />
+    <Alcohol Name="Limoncello" Abv="0.28" Type="Distillate" />
+    <Alcohol Name="Amaretto Disaronno" Abv="0.28" Type="Distillate" />
+    <Alcohol Name="Campari" Abv="0.24" Type="Distillate" />
+    <Alcohol Name="Sambuca Molinari" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Grappa Nonino" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Ouzo Plomari" Abv="0.38" Type="Distillate" />
+    <Alcohol Name="Pastis 51" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Calvados Lecompte" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Kleiner Feigling Med" Abv="0.20" Type="Distillate" />
+    <Alcohol Name="Chartreuse Green" Abv="0.55" Type="Distillate" />
+    <Alcohol Name="Bénédictine" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Suze" Abv="0.25" Type="Distillate" />
+    <Alcohol Name="Grand Marnier" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Drambuie" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Schnaps Williams" Abv="0.42" Type="Distillate" />
+    <Alcohol Name="Unicum" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Absinthe Žufánek" Abv="0.70" Type="Distillate" />
+    <Alcohol Name="Absinthe Mansinthe" Abv="0.42" Type="Distillate" />
+    <Alcohol Name="Riga Black Balsam" Abv="0.45" Type="Distillate" />
+    <Alcohol Name="Dr. J. Polibka’s Becherovka Medica" Abv="0.30" Type="Distillate" />
+    <Alcohol Name="Pálinka Szilva" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Soplica Orzech Laskowy" Abv="0.30" Type="Distillate" />
+    <Alcohol Name="Mirto" Abv="0.25" Type="Distillate" />
+    <Alcohol Name="Stroh 80" Abv="0.80" Type="Distillate" />
+    <Alcohol Name="Grappa di Barolo" Abv="0.45" Type="Distillate" />
+    <Alcohol Name="Pisco Mistral" Abv="0.40" Type="Distillate" />
+    <Alcohol Name="Sotol Por Siempre Elegante" Abv="0.40" Type="Distillate" />
+  </Alcohols>
+</Database>
