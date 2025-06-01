@@ -9,16 +9,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Database.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="data.xml">
+		<None Include="data.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Database.cs">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		</None>
 	</ItemGroup>
 
 </Project>

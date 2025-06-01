@@ -41,7 +41,7 @@
                     <TextBlock Text="Čas pití" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center"/>
+                        <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center" />
                         <TextBox x:Name="txtBoxDrinkStart" Width="100"/>
                     </StackPanel>
 
@@ -52,34 +52,35 @@
                 </StackPanel>
             </Border>
 
-            <Button Content="Pokračovat" Margin="0 5" Click="Continue2_Click" Background="DeepSkyBlue" Foreground="White"/>
+            
+            <Button x:Name="continue1Button" Click="Continue1_Click" Content="Pokračovat" Background="DeepSkyBlue" Foreground="White"/>
         </StackPanel>
         <StackPanel x:Name="Vyber_alk" Visibility="Collapsed" Grid.Row="2" Margin="20,0,20,20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Vyplněné nápoje" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
-                    <!-- Filtrační TextBox a ComboBox v jednom řádku -->
                     <StackPanel Orientation="Horizontal" Margin="0 5" VerticalAlignment="Center">
                         <TextBox x:Name="FilterTextBox" Width="200" Margin="0,0,10,0" TextChanged="FilterTextBox_TextChanged"/>
                         <ComboBox x:Name="DrinkComboBox" Width="200" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <Button Content="0.3 l" Margin="2"/>
-                        <Button Content="0.5 l" Margin="2"/>
-                        <Button Content="1 l" Margin="2"/>
+                        <Button Content="0.3 l" Margin="2"/> <!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
+                        <Button Content="0.5 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
+                        <Button Content="1 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
                         <Button Content="+" Margin="10,0,0,0"/>
+                        <!--potreba vytvorit dalsi element - suma zkonzumovaneho akoholu podle typu-->
+                        <!--treba vodka smirnoff a celkove zkozumovane mznostvi, pro kazdy typ ktery byl zkonzumovany, dal-->
                     </StackPanel>
                 </StackPanel>
             </Border>
 
-            <!-- Zbytek zůstává stejný -->
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Výsledek" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-                    <TextBlock Text="0.08 promile na konci pití" Margin="0 5"/>
-                    <TextBlock Text="Za 1h 0m budete mít 0 promile" Margin="0 5" Foreground="Green"/>
+                    <TextBlock Text="0.08 promile na konci pití" Margin="0 5"/> <!--vypis promile na konci piti-->
+                    <TextBlock Text="Za 1h 0m budete mít 0 promile" Margin="0 5" Foreground="Green"/> <!--vypis kalkulace nulove promile-->
                 </StackPanel>
             </Border>
 

@@ -1,27 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace cteniDatTest
+namespace cteniDat
 {
     [Serializable]
     [XmlRoot("Database")]
     public class Database
     {
-        [XmlArray("Alcohols"), XmlArrayItem("Alcohol")]
-        public BindingList<Alcohol> Alcohols { get; set; } = new BindingList<Alcohol>();
+        [XmlArray("Alcohols")]
+        [XmlArrayItem("Alcohol")]
+        public BindingList<Alcohol> Alcohols { get; set; } = new();
 
-        public Database() { }
+        public BindingList<Alcohol> GetAll() => Alcohols ?? new();
+    }
 
-        public BindingList<object> GetAll() //vytvoří novou BindingList<object> a zkopíruje do ní všechny položky z Alcohols. Hodí se, když potřebujete předat jednotný seznam různě typovaných položek
+    [Serializable]
+    public class Alcohol
+    {
+        string name;
+        double abv;
+        string type;
+
+        public Alcohol(string name, double abv, string type)
         {
-            var all = new BindingList<object>();
-            foreach (var p in Alcohols) all.Add(p);
-            return all;
+            Name = name;
+            Abv = abv;
+            Type = type;
         }
+
+        public Alcohol() { }
+
+        [XmlAttribute("Name")]
+        public string Name { get => name; set => name = value; }
+
+        [XmlAttribute("Abv")]
+        public double Abv { get => abv; set => abv = value; }
+
+        [XmlAttribute("Type")]
+        public string Type { get => type; set => type = value; }
+
+        public override string ToString() =>
+            $"Name: {Name}\nAbv: {Abv}\nType: {Type}";
     }
 }

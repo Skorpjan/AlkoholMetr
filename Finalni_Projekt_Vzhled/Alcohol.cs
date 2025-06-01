@@ -1,13 +1,22 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace cteniDatTest
+namespace cteniDat
 {
-    [Serializable()]
+    [Serializable]
+    [XmlRoot("Database")]
+    public class Database
+    {
+        [XmlArray("Alcohols")]
+        [XmlArrayItem("Alcohol")]
+        public List<Alcohol> Alcohols { get; set; }
+
+        public List<Alcohol> GetAll() => Alcohols ?? new List<Alcohol>();
+    }
+
+    [Serializable]
     public class Alcohol
     {
         string name;
@@ -18,9 +27,9 @@ namespace cteniDatTest
         {
             this.Name = name;
             this.Abv = abv;
-            this.type = type;
-
+            this.Type = type;
         }
+
         public Alcohol() { }
 
         [XmlAttribute("Name")]
@@ -32,9 +41,12 @@ namespace cteniDatTest
         [XmlAttribute("Type")]
         public string Type { get => type; set => type = value; }
 
-        public override string ToString() // Výstup do listboxu "listboxData"
+        public override string ToString()
         {
             return $"Name: {Name}\nAbv: {Abv}\nType: {Type}";
         }
     }
 }
+*/
+// nevyuzity kod duvodu pouziti BindingList pro databazi
+// merged do Database.cs pro zjednoduseni pristupu k datum

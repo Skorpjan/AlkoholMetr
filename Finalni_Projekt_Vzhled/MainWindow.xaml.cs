@@ -1,4 +1,5 @@
-﻿using cteniDatTest;
+﻿
+using cteniDat;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -19,27 +20,38 @@ namespace Finalni_Projekt_Vzhled
     /// </summary>
     public partial class MainWindow : Window
     {
+        private  cteniDat.Database data;
+        private List<Alcohol> allAlcohols = new();
+
+        private bool isMale = false;    //defaultni hodnota pro pohlavi 
+
+
         public MainWindow()
         {
             InitializeComponent();
             LoadData();
-            listboxData.ItemsSource = data.GetAll();
-
         }
 
         private void Continue1_Click(object sender, RoutedEventArgs e)
-{
-                Alkohol_detaily.Visibility = Visibility.Visible;
-            
-        }
-        private void LoadData()
         {
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.xml");
+            Alkohol_detaily.Visibility = Visibility.Visible; // pouze zobrazeni dalsich elementu po zadani inputu
+            if(string.IsNullOrWhiteSpace(txtBoxWeight.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkStart.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkEnd.Text))
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte všechny údaje!!!", "Zadání údajů", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            continue1Button.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
+
+        } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti zadanych dat
+        private void LoadData() // tahame data z data.xml, osetreni poked data.xml neexistuje
+        {
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.xml"); //slozeni pathu do data.xml
 
             if (!File.Exists(path))
             {
                 MessageBox.Show("data.xml not found!");
-                data = new Database();  // prevent null refs
+                data = new Database(); 
                 return;
             }
 
@@ -48,13 +60,24 @@ namespace Finalni_Projekt_Vzhled
                 var serializer = new XmlSerializer(typeof(Database));
                 using var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
                 data = (Database)serializer.Deserialize(fs);
+                allAlcohols = data.Alcohols.ToList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to load data.xml: {ex.Message}");
-                data = new Database();  // fallback
+                data = new Database(); 
             }
         }
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = FilterTextBox.Text.Trim().ToLower();
+
+            var filtered = allAlcohols
+                .Where(a => a.Name.ToLower().Contains(filter))
+                .ToList();
+
+            DrinkComboBox.ItemsSource = filtered;
+        } //metoda pro filtraci alkoholu podle jmena
 
         private void Continue2_Click(object sender, RoutedEventArgs e)
         {
@@ -78,8 +101,8 @@ namespace Finalni_Projekt_Vzhled
             {
                 Vyber_alk.Visibility = Visibility.Visible;
             }
-        }
-    
+        } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
+
 
         private void Gender_Checked(object sender, RoutedEventArgs e)
         {
@@ -87,11 +110,9 @@ namespace Finalni_Projekt_Vzhled
                 CheckBoxZena.IsChecked = false;
             else if (sender == CheckBoxZena && CheckBoxZena.IsChecked == true)
                 CheckBoxMuz.IsChecked = false;
-        }
+        }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
 
-        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
+
 
 
         }
