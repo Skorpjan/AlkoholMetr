@@ -42,6 +42,7 @@ namespace Finalni_Projekt_Vzhled
             }
 
             continue1Button.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
+            Vyber_alk.Visibility = Visibility.Visible;
 
         } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti zadanych dat
         private void LoadData() // tahame data z data.xml, osetreni poked data.xml neexistuje
@@ -112,8 +113,37 @@ namespace Finalni_Projekt_Vzhled
                 CheckBoxMuz.IsChecked = false;
         }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
 
-
-
-
+        private void DrinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DrinkComboBox.SelectedItem is Alcohol selectedAlcohol)
+            {
+                switch (selectedAlcohol.Type.ToLower())
+                {
+                    case "beer":
+                        AlcButton1.Content = "0.3 l";
+                        AlcButton2.Content = "0.5 l";
+                        AlcButton3.Content = "1 l";
+                        break;
+                    case "distillate":
+                        AlcButton1.Content = "0.02 l";
+                        AlcButton2.Content = "0.05 l";
+                        AlcButton3.Content = "0.1 l";
+                        break;
+                    case "vine":
+                        AlcButton1.Content = "0.1 l";
+                        AlcButton2.Content = "0.15 l";
+                        AlcButton3.Content = "0.2 l";
+                        break;
+                    default:
+                        AlcButton1.Content = "0.1 l";
+                        AlcButton2.Content = "0.3 l";
+                        AlcButton3.Content = "0.5 l";
+                        break;
+                }
+            }
         }
+
+
+
+    }
 }
