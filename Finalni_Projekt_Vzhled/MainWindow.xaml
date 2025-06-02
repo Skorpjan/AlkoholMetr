@@ -68,11 +68,14 @@
                     <StackPanel Orientation="Horizontal" Margin="0 5">
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         <Button Content="0.3 l" Margin="2"/>
                         <Button Content="0.5 l" Margin="2"/>
                         <Button Content="1 l" Margin="2"/>
                         <Button Content="+" Margin="10,0,0,0"/>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                         <Button x:Name="AlcButton1" Content="0.3 l" Margin="2"/> <!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo | HOTOVO-->
