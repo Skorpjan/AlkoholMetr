@@ -66,10 +66,10 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <Button x:Name="AlcButton1" Content="0.3 l" Margin="2"/> <!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButton2"  Content="0.5 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButton3"  Content="1 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButtonAdd"  Content="+" Margin="10,0,0,0"/>
+                        <Button x:Name="AlcButton1" Content="0.3 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons"/> <!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
+                        <Button x:Name="AlcButton2"  Content="0.5 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
+                        <Button x:Name="AlcButton3"  Content="1 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
+                        <Button x:Name="AlcButtonAdd" Content="+" Margin="10,0,0,0" Background="DeepSkyBlue" Height="30" Width="30" x:Uid="alcoholButtons" Click="AlcButtonAdd_Click"/> 
                         <!--potreba vytvorit dalsi element - suma zkonzumovaneho akoholu podle typu-->
                         <!--treba vodka smirnoff a celkove zkozumovane mznostvi, pro kazdy typ ktery byl zkonzumovany, dal-->
 

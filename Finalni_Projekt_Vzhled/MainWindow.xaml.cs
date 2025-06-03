@@ -20,13 +20,13 @@ namespace Finalni_Projekt_Vzhled
     /// </summary>
     public partial class MainWindow : Window
     {
-        private  cteniDat.Database data;
+        private cteniDat.Database data;
         private List<Alcohol> allAlcohols = new();
 
         private readonly Dictionary<string, List<double>> drinkVolumes = new()
         {
         { "Beer", new List<double> { 0.3, 0.5, 1.0 } },
-        { "Distillate", new List<double> { 0.02, 0.04, 0.05 } },
+        { "istillate", new List<double> { 0.02, 0.04, 0.05 } },
         { "Vine", new List<double> { 0.1, 0.2, 0.3 } },
         { "Default", new List<double> { 0.1, 0.3, 0.5 } }
         };
@@ -38,10 +38,10 @@ namespace Finalni_Projekt_Vzhled
             LoadData();
         }
 
-        private void Continue2_Click(object sender, RoutedEventArgs e)
+        private void Continue1_Click(object sender, RoutedEventArgs e)
         {
             Alkohol_detaily.Visibility = Visibility.Visible; // pouze zobrazeni dalsich elementu po zadani inputu
-            if(string.IsNullOrWhiteSpace(txtBoxWeight.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkStart.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkEnd.Text))
+            if (string.IsNullOrWhiteSpace(txtBoxWeight.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkStart.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkEnd.Text))
             {
                 MessageBoxResult result = MessageBox.Show("Vyplňte všechny údaje!!!", "Zadání údajů", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -58,7 +58,7 @@ namespace Finalni_Projekt_Vzhled
             if (!File.Exists(path))
             {
                 MessageBox.Show("data.xml not found!");
-                data = new Database(); 
+                data = new Database();
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace Finalni_Projekt_Vzhled
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to load data.xml: {ex.Message}");
-                data = new Database(); 
+                data = new Database();
             }
         }
         private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -86,7 +86,29 @@ namespace Finalni_Projekt_Vzhled
             DrinkComboBox.ItemsSource = filtered;
         } //metoda pro filtraci alkoholu podle jmena
 
-
+        private void Continue2_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxMuz.IsChecked == false && CheckBoxZena.IsChecked == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Není zaškrtlé žádné pohlaví!!!", "Výběr pohlaví", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (txtBoxWeight.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte svojí hmotnost!!!", "Zadání hmotnosti", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (txtBoxDrinkStart.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte začátek pití ⊂(◉‿◉)つ", "Zadání začátku pití", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (txtBoxDrinkEnd.Text == "")
+            {
+                MessageBoxResult result = MessageBox.Show("Vyplňte konec pití(╥﹏╥)", "Zadání konce pití", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Vyber_alk.Visibility = Visibility.Visible;
+            }
+        } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
 
 
         private void Gender_Checked(object sender, RoutedEventArgs e)
@@ -95,7 +117,7 @@ namespace Finalni_Projekt_Vzhled
                 CheckBoxZena.IsChecked = false;
             else if (sender == CheckBoxZena && CheckBoxZena.IsChecked == true)
                 CheckBoxMuz.IsChecked = false;
-        }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti da
+        }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
         private string GetSelectedDrink()
         {
             return (DrinkComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? DrinkComboBox.SelectedItem?.ToString();
@@ -128,6 +150,10 @@ namespace Finalni_Projekt_Vzhled
 
             currentButtonVolumes = volumes;
         }
-    
+
+        private void AlcButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
