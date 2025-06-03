@@ -20,6 +20,7 @@ namespace Finalni_Projekt_Vzhled
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isKilogram = true;
         private cteniDat.Database data;
         private List<Alcohol> allAlcohols = new();
 
@@ -38,7 +39,7 @@ namespace Finalni_Projekt_Vzhled
             LoadData();
         }
 
-        private void Continue1_Click(object sender, RoutedEventArgs e)
+        private void Continue2_Click(object sender, RoutedEventArgs e)
         {
             Alkohol_detaily.Visibility = Visibility.Visible; // pouze zobrazeni dalsich elementu po zadani inputu
             if (string.IsNullOrWhiteSpace(txtBoxWeight.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkStart.Text) || string.IsNullOrWhiteSpace(txtBoxDrinkEnd.Text))
@@ -46,6 +47,13 @@ namespace Finalni_Projekt_Vzhled
                 MessageBoxResult result = MessageBox.Show("Vyplňte všechny údaje!!!", "Zadání údajů", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (!int.TryParse(txtBoxWeight.Text, out int weight) || weight <= 0)
+            {
+                MessageBox.Show("Hmotnost musí být kladné celé číslo!", "Chybný vstup", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
 
             continueButton.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
             Vyber_alk.Visibility = Visibility.Visible;
@@ -86,29 +94,7 @@ namespace Finalni_Projekt_Vzhled
             DrinkComboBox.ItemsSource = filtered;
         } //metoda pro filtraci alkoholu podle jmena
 
-        private void Continue2_Click(object sender, RoutedEventArgs e)
-        {
-            if (CheckBoxMuz.IsChecked == false && CheckBoxZena.IsChecked == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Není zaškrtlé žádné pohlaví!!!", "Výběr pohlaví", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (txtBoxWeight.Text == "")
-            {
-                MessageBoxResult result = MessageBox.Show("Vyplňte svojí hmotnost!!!", "Zadání hmotnosti", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (txtBoxDrinkStart.Text == "")
-            {
-                MessageBoxResult result = MessageBox.Show("Vyplňte začátek pití ⊂(◉‿◉)つ", "Zadání začátku pití", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (txtBoxDrinkEnd.Text == "")
-            {
-                MessageBoxResult result = MessageBox.Show("Vyplňte konec pití(╥﹏╥)", "Zadání konce pití", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                Vyber_alk.Visibility = Visibility.Visible;
-            }
-        } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
+        
 
 
         private void Gender_Checked(object sender, RoutedEventArgs e)
@@ -154,6 +140,15 @@ namespace Finalni_Projekt_Vzhled
         private void AlcButtonAdd_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void comboBoxWeight_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxWeight.Text == "kg")
+            {
+                isKilogram = true;
+            }
+            else isKilogram = false;
         }
     }
 }
