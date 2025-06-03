@@ -23,8 +23,14 @@ namespace Finalni_Projekt_Vzhled
         private  cteniDat.Database data;
         private List<Alcohol> allAlcohols = new();
 
-        private bool isMale = false;    //defaultni hodnota pro pohlavi 
-
+        private readonly Dictionary<string, List<double>> drinkVolumes = new()
+        {
+        { "Beer", new List<double> { 0.3, 0.5, 1.0 } },
+        { "istillate", new List<double> { 0.02, 0.04, 0.05 } },
+        { "Vine", new List<double> { 0.1, 0.2, 0.3 } },
+        { "Default", new List<double> { 0.1, 0.3, 0.5 } }
+        };
+        private List<double> currentButtonVolumes = new() { 0.1, 0.3, 0.5 };
 
         public MainWindow()
         {
@@ -112,38 +118,38 @@ namespace Finalni_Projekt_Vzhled
             else if (sender == CheckBoxZena && CheckBoxZena.IsChecked == true)
                 CheckBoxMuz.IsChecked = false;
         }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
-
+        private string GetSelectedDrink()
+        {
+            return (DrinkComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? DrinkComboBox.SelectedItem?.ToString();
+        }
         private void DrinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DrinkComboBox.SelectedItem is Alcohol selectedAlcohol)
+            if (DrinkComboBox.SelectedItem == null)
             {
-                switch (selectedAlcohol.Type.ToLower())
-                {
-                    case "beer":
-                        AlcButton1.Content = "0.3 l";
-                        AlcButton2.Content = "0.5 l";
-                        AlcButton3.Content = "1 l";
-                        break;
-                    case "distillate":
-                        AlcButton1.Content = "0.02 l";
-                        AlcButton2.Content = "0.05 l";
-                        AlcButton3.Content = "0.1 l";
-                        break;
-                    case "vine":
-                        AlcButton1.Content = "0.1 l";
-                        AlcButton2.Content = "0.15 l";
-                        AlcButton3.Content = "0.2 l";
-                        break;
-                    default:
-                        AlcButton1.Content = "0.1 l";
-                        AlcButton2.Content = "0.3 l";
-                        AlcButton3.Content = "0.5 l";
-                        break;
-                }
+                AlcButton1.Visibility = Visibility.Collapsed;
+                AlcButton2.Visibility = Visibility.Collapsed;
+                AlcButton3.Visibility = Visibility.Collapsed;
+                return;
             }
+            else
+            {
+                AlcButton1.Visibility = Visibility.Visible;
+                AlcButton2.Visibility = Visibility.Visible;
+                AlcButton3.Visibility = Visibility.Visible;
+            }
+            string selectedDrink = GetSelectedDrink();
+            if (string.IsNullOrEmpty(selectedDrink)) return;
+            List<double> volumes;
+            if (!drinkVolumes.TryGetValue(selectedDrink, out volumes))
+            {
+                volumes = drinkVolumes["Default"];
+            }
+            AlcButton1.Content = $"{volumes[0]:0.##} l";
+            AlcButton2.Content = $"{volumes[1]:0.##} l";
+            AlcButton3.Content = $"{volumes[2]:0.##} l";
+
+            currentButtonVolumes = volumes;
         }
-
-
-
+    
     }
 }

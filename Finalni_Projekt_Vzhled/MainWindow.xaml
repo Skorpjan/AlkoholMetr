@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Finalni_Projekt_Vzhled"
         mc:Ignorable="d"
-        Title="MainWindow" Height="950" Width="800">
+        Title="Kalkulátor alkoholu" Height="950" Width="800">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="20" Grid.Row="0">
+
+        <!-- Úvodní část -->
+        <StackPanel Grid.Row="0" Margin="20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
-                    <TextBlock Text="Kalkulace odbourávání alkoholu v krvi" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
+                    <TextBlock Text="Kalkulace odbourávání alkoholu v krvi" 
+                               FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Pohlaví:" Width="80" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxMuz" Content="Muž" Checked="Gender_Checked"/>
-                        <CheckBox x:Name="CheckBoxZena" Content="Žena" Margin="10,0,0,0" Checked="Gender_Checked" />
+                        <CheckBox x:Name="CheckBoxZena" Content="Žena" Margin="10,0,0,0" Checked="Gender_Checked"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
@@ -28,21 +32,21 @@
                         <TextBox x:Name="txtBoxWeight" Width="60" Margin="0,0,10,0"/>
                         <ComboBox Width="60">
                             <ComboBoxItem Content="kg" IsSelected="True"/>
-                            <ComboBoxItem Content="lbs" />
+                            <ComboBoxItem Content="lbs"/>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Border>
-
         </StackPanel>
 
-        <StackPanel x:Name="Alkohol_detaily" Margin="21,130,19,40" Grid.RowSpan="2">
+        <!-- Čas pití -->
+        <StackPanel x:Name="Alkohol_detaily" Grid.Row="1" Margin="20,0,20,0">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Čas pití" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center" />
+                        <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center"/>
                         <TextBox x:Name="txtBoxDrinkStart" Width="100"/>
                     </StackPanel>
 
@@ -53,26 +57,28 @@
                 </StackPanel>
             </Border>
 
-            
-            <Button x:Name="continue1Button" Click="Continue1_Click" Content="Pokračovat" Background="DeepSkyBlue" Foreground="White"/>
+            <Button x:Name="continue1Button" Click="Continue1_Click" 
+                    Content="Pokračovat" Background="DeepSkyBlue" Foreground="White" Margin="0 10"/>
         </StackPanel>
+
+        <!-- Výběr alkoholu a výstup -->
         <StackPanel x:Name="Vyber_alk" Visibility="Collapsed" Grid.Row="2" Margin="20,0,20,20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Vyplněné nápoje" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 5" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBox x:Name="FilterTextBox" Width="200" Margin="0,0,10,0" TextChanged="FilterTextBox_TextChanged"/>
-                        <ComboBox x:Name="DrinkComboBox" Width="200" SelectionChanged="DrinkComboBox_SelectionChanged" />
+                        <ComboBox x:Name="DrinkComboBox" Width="200" SelectionChanged="DrinkComboBox_SelectionChanged"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <Button x:Name="AlcButton1" Content="0.3 l" Margin="2"/> <!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButton2"  Content="0.5 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButton3"  Content="1 l" Margin="2"/><!--tyto elementy se musi menit na zaklade jestli se jedna o destilat ci pivo-->
-                        <Button x:Name="AlcButtonAdd"  Content="+" Margin="10,0,0,0"/>
-                        <!--potreba vytvorit dalsi element - suma zkonzumovaneho akoholu podle typu-->
-                        <!--treba vodka smirnoff a celkove zkozumovane mznostvi, pro kazdy typ ktery byl zkonzumovany, dal-->
+                        <Button x:Name="AlcButton1" Content="0.3 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
+                        <Button x:Name="AlcButton2" Content="0.5 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
+                        <Button x:Name="AlcButton3" Content="1 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
+
+                        <Button x:Name="AlcButtonAdd" Content="+" Margin="10,0,0,0" Background="DeepSkyBlue" Height="30" Width="30" x:Uid="alcoholButtons" Click="AlcButtonAdd_Click"/>
+                        <!-- Budoucí výpis součtu zkonzumovaného alkoholu dle druhu -->
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -80,15 +86,13 @@
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Výsledek" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-                    <TextBlock Text="0.08 promile na konci pití" Margin="0 5"/> <!--vypis promile na konci piti-->
-                    <TextBlock Text="Za 1h 0m budete mít 0 promile" Margin="0 5" Foreground="Green"/> <!--vypis kalkulace nulove promile-->
+                    <TextBlock Text="0.08 promile na konci pití" Margin="0 5"/>
+                    <TextBlock Text="Za 1h 0m budete mít 0 promile" Margin="0 5" Foreground="Green"/>
                 </StackPanel>
             </Border>
 
             <Button Content="Nový výpočet" Margin="0 5" Background="DeepSkyBlue" Foreground="White"/>
         </StackPanel>
-
-
 
     </Grid>
 </Window>
