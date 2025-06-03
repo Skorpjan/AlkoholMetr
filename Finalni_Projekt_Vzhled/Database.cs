@@ -42,6 +42,6 @@ namespace cteniDat
         public string Type { get => type; set => type = value; }
 
         public override string ToString() =>
-            $"Name: {Name}\nAbv: {Abv}\nType: {Type}";
+            $"{Name}";
     }
 }

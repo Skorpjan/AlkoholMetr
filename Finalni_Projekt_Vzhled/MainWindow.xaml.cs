@@ -47,7 +47,7 @@ namespace Finalni_Projekt_Vzhled
                 return;
             }
 
-            continueButton.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
+            continue1Button.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
             Vyber_alk.Visibility = Visibility.Visible;
 
         } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti zadanych dat

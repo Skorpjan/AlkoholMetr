@@ -167,5 +167,8 @@
     <Alcohol Name="Grappa di Barolo" Abv="0.45" Type="Distillate" />
     <Alcohol Name="Pisco Mistral" Abv="0.40" Type="Distillate" />
     <Alcohol Name="Sotol Por Siempre Elegante" Abv="0.40" Type="Distillate" />
+	<Alcohol Name="Braník Světlý" Abv="0.04" Type="Beer" />
+	<Alcohol Name="Braník Ležák" Abv="0.05" Type="Beer" />
+	<Alcohol Name="Braník Jedenáctka" Abv="0.045" Type="Beer" />
   </Alcohols>
 </Database>
