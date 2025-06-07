@@ -22,11 +22,11 @@ namespace Finalni_Projekt_Vzhled
     {
         private  cteniDat.Database data;
         private List<Alcohol> allAlcohols = new();
-
+        private SummaryWindow? summaryWindow;
         private readonly Dictionary<string, List<double>> drinkVolumes = new()
         {
         { "Beer", new List<double> { 0.3, 0.5, 1.0 } },
-        { "istillate", new List<double> { 0.02, 0.04, 0.05 } },
+        { "Distillate", new List<double> { 0.02, 0.04, 0.05 } },
         { "Vine", new List<double> { 0.1, 0.2, 0.3 } },
         { "Default", new List<double> { 0.1, 0.3, 0.5 } }
         };
@@ -118,10 +118,7 @@ namespace Finalni_Projekt_Vzhled
             else if (sender == CheckBoxZena && CheckBoxZena.IsChecked == true)
                 CheckBoxMuz.IsChecked = false;
         }   // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti dat
-        private string GetSelectedDrink()
-        {
-            return (DrinkComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? DrinkComboBox.SelectedItem?.ToString();
-        }
+
         private void DrinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DrinkComboBox.SelectedItem == null)
@@ -137,13 +134,13 @@ namespace Finalni_Projekt_Vzhled
                 AlcButton2.Visibility = Visibility.Visible;
                 AlcButton3.Visibility = Visibility.Visible;
             }
-            string selectedDrink = GetSelectedDrink();
-            if (string.IsNullOrEmpty(selectedDrink)) return;
-            List<double> volumes;
-            if (!drinkVolumes.TryGetValue(selectedDrink, out volumes))
+            string selectedDrinkType = (DrinkComboBox.SelectedItem as Alcohol)?.Type ?? "Default";
+
+            if (!drinkVolumes.TryGetValue(selectedDrinkType, out List<double> volumes))
             {
                 volumes = drinkVolumes["Default"];
             }
+
             AlcButton1.Content = $"{volumes[0]:0.##} l";
             AlcButton2.Content = $"{volumes[1]:0.##} l";
             AlcButton3.Content = $"{volumes[2]:0.##} l";
@@ -151,5 +148,44 @@ namespace Finalni_Projekt_Vzhled
             currentButtonVolumes = volumes;
         }
     
+        private void AlcButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (DrinkComboBox.SelectedItem is not Alcohol selectedAlcohol)
+                return;
+
+            int index = -1;
+            if (AlcButton1.IsChecked == true) index = 0;
+            else if (AlcButton2.IsChecked == true) index = 1;
+            else if (AlcButton3.IsChecked == true) index = 2;
+
+            if (index == -1)
+            {
+                MessageBox.Show("Vyber objem nápoje!");
+                return;
+            }
+
+            double volume = currentButtonVolumes[index];
+
+            if (summaryWindow == null || !summaryWindow.IsLoaded)
+            {
+                summaryWindow = new SummaryWindow();
+                summaryWindow.Show();
+            }
+
+            summaryWindow.AddDrink(selectedAlcohol, volume);
+
+            AlcButton1.IsChecked = false;
+            AlcButton2.IsChecked = false;
+            AlcButton3.IsChecked = false;
+        }
+        private void AlcButton_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var btn in new[] { AlcButton1, AlcButton2, AlcButton3 })
+            {
+                if (btn != sender)
+                    btn.IsChecked = false;
+            }
+        }
+        
     }
 }
