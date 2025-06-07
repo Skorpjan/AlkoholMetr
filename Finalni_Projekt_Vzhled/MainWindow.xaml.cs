@@ -52,10 +52,28 @@ namespace Finalni_Projekt_Vzhled
                 MessageBox.Show("Hmotnost musí být kladné celé číslo!", "Chybný vstup", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            // Kontrola času
+            if (!TimeSpan.TryParseExact(txtBoxDrinkStart.Text, @"hh\:mm", null, out TimeSpan startTime) ||
+         !TimeSpan.TryParseExact(txtBoxDrinkEnd.Text, @"hh\:mm", null, out TimeSpan endTime))
+            {
+                MessageBox.Show("Zadejte čas ve formátu HH:mm (např. 13:00)", "Chybný čas", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            TimeSpan rozdil = endTime - startTime;
+            if (rozdil.TotalMinutes <= 0)
+            {
+                MessageBox.Show("Konec pití musí být později než začátek!", "Chybný časový interval", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
+            int hodiny = (int)rozdil.TotalHours;
+            int minuty = rozdil.Minutes;
+            MessageBox.Show($"Rozdíl: {hodiny}h {minuty}min");
 
 
 
-            continueButton.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
+            continue1Button.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
             Vyber_alk.Visibility = Visibility.Visible;
 
         } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti zadanych dat
