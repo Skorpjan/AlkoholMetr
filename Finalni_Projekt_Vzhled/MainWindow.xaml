@@ -8,14 +8,26 @@
         Title="Kalkulátor alkoholu" Height="950" Width="800">
 
     <Grid>
+        <!-- 3 řádky: nahoře oba panely, pak tlačítko, dole výběr alkoholu -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- řádek 0: Úvodní část + Čas pití -->
             <RowDefinition Height="Auto"/>
+            <!-- řádek 1: tlačítko Pokračovat -->
             <RowDefinition Height="*"/>
+            <!-- řádek 2: Výběr alkoholu a výstup -->
         </Grid.RowDefinitions>
 
-        <!-- Úvodní část -->
-        <StackPanel Grid.Row="0" Margin="20">
+        <!-- 2 sloupce vedle sebe -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!-- sloupec 0 -->
+            <ColumnDefinition Width="*"/>
+            <!-- sloupec 1 -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Úvodní část (row 0, col 0) -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Kalkulace odbourávání alkoholu v krvi" 
@@ -30,7 +42,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Hmotnost:" Width="80" VerticalAlignment="Center"/>
                         <TextBox x:Name="txtBoxWeight" Width="60" Margin="0,0,10,0"/>
-                        <ComboBox Width="60">
+                        <ComboBox x:Name="comboBoxUnit" Width="60">
                             <ComboBoxItem Content="kg" IsSelected="True"/>
                             <ComboBoxItem Content="lbs"/>
                         </ComboBox>
@@ -39,45 +51,70 @@
             </Border>
         </StackPanel>
 
-        <!-- Čas pití -->
-        <StackPanel x:Name="Alkohol_detaily" Grid.Row="1" Margin="20,0,20,0">
+        <!-- Čas pití (row 0, col 1) -->
+        <StackPanel x:Name="Alkohol_detaily" Grid.Row="0" Grid.Column="1" Margin="20">
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
+                    <StackPanel.ToolTip>
+                        <ToolTip>
+                            Zadejte čas ve formátu HH:mm (např. 20:30)
+                        </ToolTip>
+                    </StackPanel.ToolTip>
                     <TextBlock Text="Čas pití" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Začátek pití:" Width="100" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtBoxDrinkStart" Width="100"/>
+                        <TextBox x:Name="txtBoxDrinkStart" Width="100">
+                        </TextBox>
                     </StackPanel>
-
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Konec pití:" Width="100" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtBoxDrinkEnd" Width="100"/>
+                        <TextBox x:Name="txtBoxDrinkEnd" Width="100">
+                        </TextBox>
                     </StackPanel>
                 </StackPanel>
             </Border>
-
-            <Button x:Name="continue1Button" Click="Continue1_Click" 
-                    Content="Pokračovat" Background="DeepSkyBlue" Foreground="White" Margin="0 10"/>
         </StackPanel>
 
-        <!-- Výběr alkoholu a výstup -->
-        <StackPanel x:Name="Vyber_alk" Visibility="Collapsed" Grid.Row="2" Margin="20,0,20,20">
-            <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
+        <!-- Tlačítko Pokračovat (row 1, col 0–1) -->
+        <Button x:Name="continue1Button" Grid.Column="0" Grid.ColumnSpan="2"
+                Click="Continue1_Click"
+                Content="Pokračovat"
+                Background="DeepSkyBlue"
+                Foreground="White"
+                Margin="20,171,20,25" Grid.RowSpan="2"/>
+
+        <!-- Výběr alkoholu a výstup (row 2, přes oba sloupce) -->
+        <StackPanel x:Name="Vyber_alk" Visibility="Hidden" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,0,20,20">
+            <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10" Width="736" Height="192">
                 <StackPanel>
                     <TextBlock Text="Vyplněné nápoje" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <TextBox x:Name="FilterTextBox" Width="200" Margin="0,0,10,0" TextChanged="FilterTextBox_TextChanged"/>
-                        <ComboBox x:Name="DrinkComboBox" Width="200" SelectionChanged="DrinkComboBox_SelectionChanged"/>
+                        <TextBox x:Name="FilterTextBox" Width="200" Margin="0,0,10,0"
+                                 TextChanged="FilterTextBox_TextChanged"
+                                 Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <ListBox x:Name="DrinkComboBox" Width="492"
+                                 SelectionChanged="DrinkComboBox_SelectionChanged"
+                                 Height="88" FontWeight="Bold"
+                                 DisplayMemberPath="Name"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 5">
-                        <Button x:Name="AlcButton1" Content="0.3 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
-                        <Button x:Name="AlcButton2" Content="0.5 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
-                        <Button x:Name="AlcButton3" Content="1 l" Margin="2" Background="DeepSkyBlue" x:Uid="AlcoholButtons" Height="30" Width="30" Visibility="Collapsed"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 5" Width="697">
+                        <ToggleButton x:Name="AlcButton1" Content="0.3 l" Margin="2"
+                  Background="DeepSkyBlue" Height="30" Width="50"
+                  Visibility="Collapsed" Checked="AlcButton_Checked" />
 
-                        <Button x:Name="AlcButtonAdd" Content="+" Margin="10,0,0,0" Background="DeepSkyBlue" Height="30" Width="30" x:Uid="alcoholButtons" Click="AlcButtonAdd_Click"/>
+                        <ToggleButton x:Name="AlcButton2" Content="0.5 l" Margin="2"
+                  Background="DeepSkyBlue" Height="30" Width="50"
+                  Visibility="Collapsed" Checked="AlcButton_Checked" />
+
+                        <ToggleButton x:Name="AlcButton3" Content="1 l" Margin="2"
+                  Background="DeepSkyBlue" Height="30" Width="50"
+                  Visibility="Collapsed" Checked="AlcButton_Checked"/>
+
+                        <Button x:Name="AlcButtonAdd" Content="+" Margin="10,0,0,0"
+                Background="DeepSkyBlue" Height="30" Width="30"
+                Click="AlcButtonAdd_Click"/>
                         <!-- Budoucí výpis součtu zkonzumovaného alkoholu dle druhu -->
                     </StackPanel>
                 </StackPanel>
@@ -86,13 +123,11 @@
             <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0 10">
                 <StackPanel>
                     <TextBlock Text="Výsledek" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-                    <TextBlock Text="0.08 promile na konci pití" Margin="0 5"/>
-                    <TextBlock Text="Za 1h 0m budete mít 0 promile" Margin="0 5" Foreground="Green"/>
+                    <TextBlock x:Name="TextPromileResult" Margin="0 5" Visibility="Collapsed"/>
+                    <TextBlock x:Name="TextSoberTime" Margin="0 5" Foreground="Green" Visibility="Collapsed"/>
                 </StackPanel>
             </Border>
 
-            <Button Content="Nový výpočet" Margin="0 5" Background="DeepSkyBlue" Foreground="White"/>
         </StackPanel>
-
     </Grid>
 </Window>
