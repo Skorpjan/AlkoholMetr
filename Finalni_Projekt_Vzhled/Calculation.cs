@@ -20,6 +20,7 @@ namespace Finalni_Projekt_Vzhled
         public DateTime EndTime { get; }
         public Gender UserGender { get; }
 
+        public double PromileAtStart { get; private set; } //pro potřeby grafu
         public double PromileAtEnd { get; private set; } 
         public TimeSpan EliminationDuration { get; private set; }
         public DateTime SoberTimeEstimate { get; private set; }
@@ -41,11 +42,12 @@ namespace Finalni_Projekt_Vzhled
             double durationHours = (EndTime - StartTime).TotalHours;        // Doba pití v hodinách
             if (durationHours < 0) durationHours = 0; // Zabránění záporné době pití
 
-            double bac = AlcoholGrams / (WeightKg * r);       // Výpočet promile
+            double bac = AlcoholGrams / (WeightKg * r);       // Výpočet promile - - - ASI POTŘEBA PRO GRAF
+            PromileAtStart = bac;                             // Pro potřeby grafu,
             double eliminationRate = 0.15;                    // Promile odbourané za hodinu
             double eliminated = eliminationRate * durationHours; // Kolik promile bylo odbouráno za dobu pití
 
-            PromileAtEnd = bac - eliminated;        // Promile na konci doby pití
+            PromileAtEnd = bac - eliminated;        // Promile na konci doby pití - - - POTŘEBA PRO GRAF
             if (PromileAtEnd < 0) PromileAtEnd = 0; // Zabránění záporným hodnotám promile
 
             double timeToSober = PromileAtEnd / eliminationRate; // Doba potřebná k odbourání promile

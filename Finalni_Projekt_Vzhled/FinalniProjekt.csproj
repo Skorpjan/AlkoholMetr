@@ -14,5 +14,9 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
+	</ItemGroup>
+
 </Project>
 <!-- nesahat!!, jinak to zkazi heldani v DB -->

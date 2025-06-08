@@ -12,12 +12,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using OxyPlot;
+using OxyPlot.Series;
+using System.Collections.Generic;
 using static Finalni_Projekt_Vzhled.Calculation; // Corrected to use 'using static' for the Calculation type
 namespace Finalni_Projekt_Vzhled
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary>77
     public partial class MainWindow : Window
     {
         private  cteniDat.Database data; // instance databaze, ktera obsahuje vsechny alkoholy
@@ -52,6 +55,9 @@ namespace Finalni_Projekt_Vzhled
 
             continue1Button.Visibility = Visibility.Collapsed; // skryti tlacitka pro pokracovani
             Vyber_alk.Visibility = Visibility.Visible;
+
+
+         
 
         } // pouze zobrazeni dalsich elementu po zadani inputu + kontorla spravnosti zadanych dat
         private void LoadData() // tahame data z data.xml, osetreni poked data.xml neexistuje
@@ -169,6 +175,14 @@ namespace Finalni_Projekt_Vzhled
 
         public void ZobrazitVysledek(Calculation calc) // metoda pro zobrazeni vysledku v hlavnim okne
         {
+            double promileStart = calc.PromileAtStart; //graf
+            double timeToZeroHours = (calc.SoberTimeEstimate - calc.EndTime).TotalHours;
+
+            var graf = new Graf(promileStart, timeToZeroHours);
+            this.DataContext = graf;
+            GrafPlotView.Model = graf.GrafModel;
+            GrafPlotView.InvalidatePlot(true);
+
             TextPromileResult.Text = $"{calc.PromileAtEnd:0.00}‰ na konci pití"; // zobrazi promile na konci pití
 
             int hodiny = (int)calc.EliminationDuration.TotalHours; // ziskani hodin z doby odbourani
