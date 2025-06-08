@@ -29,7 +29,7 @@ namespace Finalni_Projekt_Vzhled
         { "Vine", new List<double> { 0.1, 0.2, 0.3 } },
         { "Default", new List<double> { 0.1, 0.3, 0.5 } }
         }; //ke danym typum vzdy alkohlou pripojime vzdy typickou velikost servirovani
-        private List<double> currentButtonVolumes = new() { 0.1, 0.3, 0.5 }; // default volumes for buttons if no specific type is selected
+        private List<double> currentButtonVolumes = new() { 0.1, 0.3, 0.5 }; // default hodnota objemu pro fallback
 
         Alcohol? selectedAlcohol = null;
 
